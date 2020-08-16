@@ -1,0 +1,93 @@
+.table-div {
+    margin: 20px 0px;
+
+    button {
+        height: 29px;
+        margin-right: 5px;
+        background-color: dodgerblue;
+    }
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+}
+
+.parent-div {
+    background-color: bisque;
+    width: 51%;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+
+.region-bar {
+    padding: 5px;
+
+    button {
+        height: 32px;
+        float: right;
+        margin-right: 5px;
+        background-color: dodgerblue;
+    }
+
+    .region-dropdown {
+        height: 32px;
+        width: 20%;
+    }
+}
+
+table {
+    width: 100%;
+    padding: 5px;
+    background-color: lightgreen;
+
+    span {
+        color: black;
+    }
+}
+
+.header {
+    background-color:  grey;
+
+    th {
+        height: 39px;
+        font-size: 23px;
+        font-weight: normal;
+        color: black;
+        background-color: lightgray;
+        position: sticky;
+        z-index: 1;
+        font-family: sans-serif;
+
+        span {
+            cursor: pointer;
+        }
+    }
+}
+
+tr {
+    background-color: lightyellow;
+}
+
+.od-sort-up {
+    font-size: 60%;
+}
+
+.od-sort-down {
+    font-size: 60%;
+}
+
+.od-icon {
+    padding: 5px;
+    font-size: 85%;
+    color: black;
+}
+
+input {
+    height: 25px;
+}
+
+span {
+    color: red;
+}

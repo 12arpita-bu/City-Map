@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CityMap"
+    }
+  },
+  "defaultProject": "CityMap",
+  "cli": {
+    "analytics": "2a75bb29-8d0b-4410-83dd-f8654db2efd1"
+  }
 }

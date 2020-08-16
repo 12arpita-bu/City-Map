@@ -1,0 +1,72 @@
+<div class="table-div">
+    <button (click)="addTable()" title="Enter new region">Add Table</button>
+    <button [disabled]="dataTable.invalid" (click)="updateMap()"
+                    title="View newly added city on map or update the existing city">Update Map</button>
+</div>
+<div class ="xyz">
+    <form [formGroup]="dataTable">
+        <ng-container formArrayName="regionTable" *ngFor="let regionGroup of regionFormControls.controls; let j = index">
+            <div [formGroupName]="j" class="parent-div">
+                <div class="region-bar">
+                    <input type="text" formControlName="region" id="region" placeholder="Region">
+                    <button (click)="addCity(regionGroup)" title="Add a new row to enter details for new city">Add City</button>
+                    <button [disabled]="regionGroup.invalid && checkidx" (click)="deleteCity(regionGroup, j)"
+                        title="Delete the selected city from table">Delete
+                        Selected</button>
+                </div>
+                <table id="dataTable">
+                    <thead class="header">
+                        <tr>
+                            <ng-container *ngFor="let column of tableHeading; index as i">
+                                <th [attr.colspan]="column.id == 'position' ? '2' : '1'">
+                                    <div *ngIf="column.id != 'disabled'; else notSort">
+                                        <span>
+                                            <span *ngIf="sortDirection == 'ASC'">
+                                                <span class="text-ellipsis"> {{ column.label }}</span>
+                                                <i class="fa-sort od-sort-up od-icon gray"></i>
+                                            </span>
+                                            <span *ngIf="sortDirection == 'DESC'">
+                                                <span class="text-ellipsis"> {{ column.label }}</span>
+                                                <i class="fa-sort od-sort-down od-icon gray"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <ng-template #notSort>
+                                        <span>
+                                            <span class="text-ellipsis">
+                                                {{ column.label }}
+                                            </span>
+                                            <!-- <i class="top-align od-sort od-icon gray"></i> -->
+                                        </span>
+                                    </ng-template>
+                                </th>
+                            </ng-container>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container formArrayName="tableRows"
+                            *ngFor="let cityGroup of regionGroup.controls.tableRows.controls; let i = index">
+                            <tr class="datarow" [formGroupName]="i">
+                                <td>
+                                    <input type="checkbox" formControlName="disabled" (change)="updateMap()">
+                                </td>
+                                <td>
+                                    <input type="text" formControlName="name" placeholder="Name">
+                                </td>
+                                <td>
+                                    <input type="number" formControlName="latitude" placeholder="Latitude">
+                                </td>
+                                <td>
+                                    <input type="number" formControlName="longitude" placeholder="Longitude">
+                                </td>
+                                <td>
+                                    <input type="text" formControlName="volume" placeholder="Volume">
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </ng-container>
+    </form>
+</div>
